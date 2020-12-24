@@ -104,9 +104,9 @@ document.getElementById("btn").addEventListener("click", ()=>{
 
     if (finalanswer && finalanswer === data[i].correct){
         point++;
-        alert(`Correct...Your scored ${point}`);
+        alert(`Correct...You scored ${point}`);
     }else{
-        alert(`Oh Wrong...Your scored ${point}`);
+        alert(`Oh Wrong...You scored ${point}`);
     }
     i++;
             if(i<data.length){
@@ -115,7 +115,7 @@ document.getElementById("btn").addEventListener("click", ()=>{
             }else{
                     // quizbody.innerHTML =`yeeeee`;
                     
-                    alert(`hey you completed successfully and your score is ${point} out of 5`);
+                    alert(`Hey you completed successfully and your score is ${point} out of 5`);
             }
    
 
