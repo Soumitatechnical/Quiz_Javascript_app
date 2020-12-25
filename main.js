@@ -44,7 +44,7 @@ const questions=[
 
 
 
-// const quizbody=document.getElementsByClassName("quiz-container");
+
 
 let i=0;
 let point=0;
@@ -99,14 +99,22 @@ function delselect(){
 
 document.getElementById("btn").addEventListener("click", ()=>{
 
-    
+
     const finalanswer=getChecked();
 
     if (finalanswer && finalanswer === data[i].correct){
+
+        
         point++;
-        alert(`Correct...You scored ${point}`);
+        // alert(`Correct...You scored ${point}`);
+        document.getElementById('header-text').innerHTML=` ❤️❤️❤️Correct..You Scored ${point}`;
+        document.body.style.background="green";
     }else{
-        alert(`Oh Wrong...You scored ${point}`);
+        
+      
+        document.getElementById('header-text').innerHTML=` 😢😢😢Wrong..Your Score remains same ${point}`;
+        // alert(`Oh Wrong...You scored ${point}`);
+       document.body.style.background="red";
     }
     i++;
             if(i<data.length){
@@ -115,7 +123,10 @@ document.getElementById("btn").addEventListener("click", ()=>{
             }else{
                     // quizbody.innerHTML =`yeeeee`;
                     
-                    alert(`Hey you completed successfully and your score is ${point} out of 5`);
+                    document.getElementById('header-text').innerHTML=`You Completed 👏👏👏Score is ${point}`;
+            document.body.style.background="Purple";
+            document.querySelector('.quiz-container').style.display="none";
+            
             }
    
 
@@ -123,18 +134,3 @@ document.getElementById("btn").addEventListener("click", ()=>{
 });
 
 
-// if(finalanswer){
-//     if( finalanswer==data[i].correct)
-//         point++;
-
-//     i++;
-//     if(i<data.length){
-//         firstload();
-//     }else{
-//             // quizbody.innerHTML =`yeeeee`;
-            
-//             alert(`hey you completed successfully and point is ${point} out of 5`);
-//     }
-//         // console.log("hii");
-
-// }
