@@ -42,34 +42,43 @@ const questions=[
     }
 ];
 
-
-
-
-
 let i=0;
 let point=0;
-
+let j=0;
 let data=questions;
-firstload();
+document.querySelector('.start-box').addEventListener('click', show);
 
+function show(){
+
+    document.querySelector('.quiz-container').classList.remove('hide');
+    firstload();
+    document.querySelector('.quiz-container').classList.add('show');
+    document.querySelector('.start-box').classList.add('hide');
+    document.querySelector('.instructions').classList.add('hide');
+   
+    
+}
+
+// firstload();
 function firstload(){
 
+    let colors=['#ff6e7f', '#94716B', '#EDDE5D','#799F0C','#ffa751'];
+    
     delselect();
-   
-    // let data=questions;
+    
     const a_text=document.getElementById("a_text");
     const b_text=document.getElementById("b_text");
     const c_text=document.getElementById("c_text");
     const d_text=document.getElementById("d_text");
-
+    document.querySelector('.quiz-container').style.backgroundColor=colors[j];
     document.getElementById("question").innerHTML=questions[i].Q;
-
     a_text.innerHTML=data[i].a;
     b_text.innerHTML=data[i].b;
     c_text.innerHTML=data[i].c;
     d_text.innerHTML=data[i].d;
 
 }
+
 
 function getChecked(){
 
@@ -86,51 +95,38 @@ function getChecked(){
 }
 
 function delselect(){
-    // let answers=document.getElementsByClassName('answer');
+   
     let answerlists=document.querySelectorAll('.answer');
     answerlists.forEach(answerlist=>{
         
             answerlist.checked=false;
         
-    });
+    }); 
 }
 
-
-
 document.getElementById("btn").addEventListener("click", ()=>{
-
-
     const finalanswer=getChecked();
-
     if (finalanswer && finalanswer === data[i].correct){
 
-        
         point++;
-        // alert(`Correct...You scored ${point}`);
         document.getElementById('header-text').innerHTML=` ❤️❤️❤️Correct..You Scored ${point}`;
-        document.body.style.background="green";
-    }else{
         
-      
-        document.getElementById('header-text').innerHTML=` 😢😢😢Wrong..Your Score remains same ${point}`;
-        // alert(`Oh Wrong...You scored ${point}`);
-       document.body.style.background="red";
+    }else{
+        document.getElementById('header-text').innerHTML=`😢😢😢<br />Wrong..Your Score remains same ${point}`;
+       
     }
-    i++;
+    
+            i++;
             if(i<data.length){
-                
-                firstload();
-            }else{
-                    // quizbody.innerHTML =`yeeeee`;
+                    j++;
+                    firstload();
                     
+            }else{  
                     document.getElementById('header-text').innerHTML=`You Completed 👏👏👏Score is ${point}`;
-            document.body.style.background="Purple";
-            document.querySelector('.quiz-container').style.display="none";
-            
+                    document.body.style.background="Purple";
+                    document.querySelector('.quiz-container').style.display="none";
             }
    
-
-
 });
 
 
