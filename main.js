@@ -48,6 +48,8 @@ let j=0;
 let data=questions;
 document.querySelector('.start-box').addEventListener('click', show);
 
+// setInterval(gethearts, 300);
+
 function show(){
 
     document.querySelector('.quiz-container').classList.remove('hide');
@@ -104,15 +106,32 @@ function delselect(){
     }); 
 }
 
+function gethearts(){
+ const heart=document.createElement('div');
+ heart.classList.add('heart');
+ heart.style.left=Math.random()*100+'vw';
+ heart.style.animationDuration=Math.random()*10+0.5+'s';
+ heart.innerHTML='❤️❤️';
+ document.body.appendChild(heart);
+
+ setTimeout(()=>{
+     heart.remove();
+ }, 1000)
+}
+
 document.getElementById("btn").addEventListener("click", ()=>{
     const finalanswer=getChecked();
     if (finalanswer && finalanswer === data[i].correct){
 
         point++;
         document.getElementById('header-text').innerHTML=` ❤️❤️❤️Correct..You Scored ${point}`;
+        document.getElementById('clap').play();
+       gethearts();
+       
         
     }else{
         document.getElementById('header-text').innerHTML=`😢😢😢<br />Wrong..Your Score remains same ${point}`;
+        document.getElementById('ops').play();
        
     }
     
@@ -123,8 +142,10 @@ document.getElementById("btn").addEventListener("click", ()=>{
                     
             }else{  
                     document.getElementById('header-text').innerHTML=`You Completed 👏👏👏Score is ${point}`;
+                    document.getElementById('clap').play();
                     document.body.style.background="Purple";
                     document.querySelector('.quiz-container').style.display="none";
+                    
             }
    
 });
