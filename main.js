@@ -9,7 +9,7 @@ const questions=[
         correct:"a"
     },
     {
-        Q:"What is the first prime capital of India?",
+        Q:"What was the first capital of ancient India under British Rule?",
         a:"Delhi",
         b:"Hydrabad",
         c:"Calcutta",
